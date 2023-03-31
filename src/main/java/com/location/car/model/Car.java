@@ -29,4 +29,33 @@ public class Car {
     @Column(name = "pictureUrl")
     private String pictureUrl;
 
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getModel() {
+        return model;
+    }
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+    public String getPictureUrl(){
+        return pictureUrl;
+    }
+    public void setPictureUrl(String pictureUrl){
+        this.pictureUrl = pictureUrl;
+    }
+
+  
+
 }
