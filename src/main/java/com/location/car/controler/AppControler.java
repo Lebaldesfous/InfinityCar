@@ -11,7 +11,6 @@ import com.location.car.repository.UserRepository;
 @RestController
 @CrossOrigin
 @RequestMapping("")
-
 public class AppControler {
     @Autowired
     private UserRepository UserRepository;
