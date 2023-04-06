@@ -28,7 +28,16 @@ public class AppControler {
 
     @PostMapping("/login")
     public @ResponseBody Optional<User> login (@RequestBody User newuser){
-        return UserRepository.findUserByEmail(newuser.getEmail());
+        //find user by email or username and password
+        if(UserRepository.findUserByEmailAndPassword(newuser.getEmail(), newuser.getPassword()).isPresent()){
+            return UserRepository.findUserByEmailAndPassword(newuser.getEmail(), newuser.getPassword());
+        }
+        else if(UserRepository.findUserByEmailAndPassword(newuser.getUsername(), newuser.getPassword()).isPresent()){
+            return UserRepository.findUserByEmailAndPassword(newuser.getUsername(), newuser.getPassword());
+        }
+        else{
+            return null;
+        }
     }
 
     @GetMapping("/users")
