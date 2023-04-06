@@ -8,21 +8,19 @@
       <MDBInput
         type="email"
         label="Email address"
-        id="form2Email"
-        v-model="form2Email"
+        v-model="email"
         wrapperClass="mb-4"
       />
       <!-- Password input -->
       <MDBInput
         type="password"
         label="Password"
-        id="form2Password"
-        v-model="form2Password"
+        v-model="password"
         wrapperClass="mb-4"
       />
 
       <!-- Submit button -->
-      <MDBBtn color="primary" block> Sign in </MDBBtn>
+      <MDBBtn color="primary" block v-on:click="login"> Sign in </MDBBtn>
   
       <!-- Register buttons -->
       <div class="text-center">
@@ -57,16 +55,16 @@ export default {
     MDBBtn,
     MDBIcon
   },
-  setup() {
-    const form2Email = ref("");
-    const form2Password = ref("");
-    const form2LoginCheck = ref(true);
-
+  data() {
     return {
-      form2Email,
-      form2Password,
-      form2LoginCheck,
-    };
+      email:"",
+      password:""
+    }
   },
+  methods:{
+    login(){
+      console.log(this.email, this.password)
+    }
+  }
 };
 </script>
