@@ -6,9 +6,9 @@
         </div>
       <!-- Email input -->
       <MDBInput
-        type="email"
-        label="Email address"
-        v-model="email"
+        type="username"
+        label="Username"
+        v-model="username"
         wrapperClass="mb-4"
       />
       <!-- Password input -->
@@ -44,7 +44,7 @@ import {
   MDBBtn,
   MDBIcon
 } from "mdb-vue-ui-kit";
-
+import api from '../api'
 export default {
   components: {
     MDBRow,
@@ -61,8 +61,14 @@ export default {
     }
   },
   methods:{
-    login(){
-      console.log(this.email, this.password)
+    async login(){
+      let result = await api.post(
+        "/login",
+        {username: this.username, password:this.password}
+      )
+      if(result.data != null){
+        document.cookie = `session=${this.username}; path=/; SameSite=Strict`
+      }
     }
   }
 };
