@@ -22,10 +22,15 @@ public class CarApplication {
 
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http.authorizeHttpRequests()
-				.requestMatchers(WHITE_LIST_URLS)
-				.permitAll();
-		http.formLogin(AbstractHttpConfigurer::disable).csrf(AbstractHttpConfigurer::disable);
+
+		http
+				.authorizeRequests(authorizeRequests ->
+						authorizeRequests
+								.requestMatchers(WHITE_LIST_URLS).permitAll()
+
+				)
+				.formLogin(AbstractHttpConfigurer::disable)
+				.csrf(AbstractHttpConfigurer::disable);
 
 		return http.build();
 	}
