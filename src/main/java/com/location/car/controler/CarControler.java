@@ -10,13 +10,13 @@ import com.location.car.repository.CarRepository;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:8080)")
-@RequestMapping("/car")
+@RequestMapping("/cars")
 public class CarControler {
     @Autowired
     private CarRepository carRepository;
     // view all customers
     @GetMapping("")
-    public @ResponseBody Iterable<Car> getAllCustomers(){
+    public @ResponseBody Iterable<Car> getAllCars(){
         return carRepository.findAll();
     }
 

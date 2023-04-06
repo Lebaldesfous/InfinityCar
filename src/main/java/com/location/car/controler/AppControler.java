@@ -31,6 +31,9 @@ public class AppControler {
         return UserRepository.findUserByEmail(newuser.getEmail());
     }
 
-
+    @GetMapping("/users")
+    public @ResponseBody Iterable<User> getAllUsers(){
+        return UserRepository.findAll();
+    }
 
 }
