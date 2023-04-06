@@ -71,7 +71,7 @@ import {
   MDBBtn,
   MDBIcon
 } from "mdb-vue-ui-kit";
-import axios from 'axios'
+import api from '../api'
 export default {
   components: {
     MDBRow,
@@ -92,13 +92,9 @@ export default {
       }
     },
     async signup() {
-      let result = await axios.post(
-        "http://localhost:8081/signin",
-        {username: this.firstname, email: this.email, password:this.password},
-        {headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
-        }}
+      let result = await api.post(
+        "/signin",
+        {username: this.firstname, email: this.email, password:this.password}
       )
       console.warn(result)
     } 
