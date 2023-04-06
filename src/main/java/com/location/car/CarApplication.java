@@ -13,10 +13,10 @@ public class CarApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CarApplication.class, args);
 	}
-	
+
 	private static final AntPathRequestMatcher[] WHITE_LIST_URLS = {
-		new AntPathRequestMatcher("/**"),
-		
+			new AntPathRequestMatcher("**"),
+
 	};
 
 	@Bean
