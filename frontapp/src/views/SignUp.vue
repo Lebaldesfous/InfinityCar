@@ -93,11 +93,11 @@ export default {
     },
     async signup() {
       let result = await axios.post(
-        `http://localhost:8081/signin`,
+        "http://localhost:8081/signin",
         {username: this.firstname, email: this.email, password:this.password},
         {headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
         }}
       )
       console.warn(result)
