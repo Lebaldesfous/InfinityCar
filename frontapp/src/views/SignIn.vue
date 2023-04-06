@@ -44,7 +44,6 @@ import {
   MDBBtn,
   MDBIcon
 } from "mdb-vue-ui-kit";
-import { ref } from "vue";
 
 export default {
   components: {

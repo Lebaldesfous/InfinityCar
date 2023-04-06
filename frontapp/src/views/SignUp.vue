@@ -11,7 +11,7 @@
             type="text"
             label="First name"
             id="form3FirstName"
-            v-model="form3FirstName"
+            v-model="firstname"
           />
         </MDBCol>
         <MDBCol>
@@ -19,7 +19,7 @@
             type="text"
             label="Last name"
             id="form3LastName"
-            v-model="form3LastName"
+            v-model="lastname"
           />
         </MDBCol>
       </MDBRow>
@@ -28,7 +28,7 @@
         type="email"
         label="Email address"
         id="form3Email"
-        v-model="form3Email"
+        v-model="email"
         wrapperClass="mb-4"
       />
       <!-- Password input -->
@@ -36,27 +36,19 @@
         type="password"
         label="Password"
         id="form3Password"
-        v-model="form3Password"
+        v-model="password"
         wrapperClass="mb-4"
       />
       <MDBInput
         type="password"
         label="PasswordConfirm"
         id="form3PasswordConfirm"
-        v-model="form3Password"
+        v-model="passwordconfirm"
         wrapperClass="mb-4"
       />
   
-      <!-- Checkbox -->
-      <MDBCheckbox
-        label="Remember me"
-        id="form3SubscribeCheck"
-        v-model="form3SubscribeCheck"
-        wrapperClass="d-flex justify-content-center mb-4"
-      />
-  
       <!-- Submit button -->
-      <MDBBtn color="primary" block class="mb-4"> Sign up </MDBBtn>
+      <MDBBtn color="primary" block class="mb-4" v-on:click="signup"> Sign up </MDBBtn>
   
     </form>
 </template>
@@ -79,8 +71,7 @@ import {
   MDBBtn,
   MDBIcon
 } from "mdb-vue-ui-kit";
-import { ref } from "vue";
-
+import axios from 'axios'
 export default {
   components: {
     MDBRow,
@@ -90,20 +81,27 @@ export default {
     MDBBtn,
     MDBIcon
   },
-  setup() {
-    const form3FirstName = ref("");
-    const form3LastName = ref("");
-    const form3Email = ref("");
-    const form3Password = ref("");
-    const form3SubscribeCheck = ref(true);
-
-    return {
-      form3FirstName,
-      form3LastName,
-      form3Email,
-      form3Password,
-      form3SubscribeCheck
-    };
-  },
+  methods: {
+    data() {
+      return {
+        firstname:"",
+        lastname:"",
+        email:"",
+        password:"",
+        passwordconfirm: ""
+      }
+    },
+    async signup() {
+      let result = await axios.post(
+        `http://localhost:8081/signin`,
+        {username: this.firstname, email: this.email, password:this.password},
+        {headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        }}
+      )
+      console.warn(result)
+    } 
+  }
 };
 </script>
