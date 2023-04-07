@@ -83,9 +83,10 @@ export default {
     async signup() {
       let result = await api.post(
         "/signin",
-        {username: this.firstname, email: this.email, password:this.password}
+        {username: this.username, email: this.email, password:this.password}
       )
-      console.warn(result)
+      window.location.reload()
+
     } 
   }
 };

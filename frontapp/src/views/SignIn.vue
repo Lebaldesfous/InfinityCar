@@ -7,7 +7,7 @@
       <!-- Email input -->
       <MDBInput
         type="username"
-        label="Username"
+        label="Username or email"
         v-model="username"
         wrapperClass="mb-4"
       />
@@ -20,7 +20,7 @@
       />
 
       <!-- Submit button -->
-      <MDBBtn color="primary" block v-on:click="login"> Sign in </MDBBtn>
+      <RouterLink to="/"><MDBBtn color="primary" block v-on:click="login"> Sign in </MDBBtn></RouterLink>
   
       <!-- Register buttons -->
       <div class="text-center">
@@ -66,8 +66,12 @@ export default {
         "/login",
         {username: this.username, password:this.password}
       )
-      if(result.data != null){
+      console.log(result)
+      if(document.cookie.includes("session=")){
+        console.log("Un cookie de session existe déjà.")
+      }else if(result.data != null){
         document.cookie = `session=${this.username}; path=/; SameSite=Strict`
+        window.location.reload()
       }
     }
   }
