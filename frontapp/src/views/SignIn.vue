@@ -6,9 +6,9 @@
         </div>
       <!-- Email input -->
       <MDBInput
-        type="email"
-        label="Email address"
-        v-model="email"
+        type="username"
+        label="Username or email"
+        v-model="username"
         wrapperClass="mb-4"
       />
       <!-- Password input -->
@@ -20,7 +20,7 @@
       />
 
       <!-- Submit button -->
-      <MDBBtn color="primary" block v-on:click="login"> Sign in </MDBBtn>
+      <RouterLink to="/"><MDBBtn color="primary" block v-on:click="login"> Sign in </MDBBtn></RouterLink>
   
       <!-- Register buttons -->
       <div class="text-center">
@@ -44,7 +44,7 @@ import {
   MDBBtn,
   MDBIcon
 } from "mdb-vue-ui-kit";
-
+import api from '../api'
 export default {
   components: {
     MDBRow,
@@ -61,8 +61,18 @@ export default {
     }
   },
   methods:{
-    login(){
-      console.log(this.email, this.password)
+    async login(){
+      let result = await api.post(
+        "/login",
+        {username: this.username, password:this.password}
+      )
+      console.log(result)
+      if(document.cookie.includes("session=")){
+        console.log("Un cookie de session existe déjà.")
+      }else if(result.data != null){
+        document.cookie = `session=${this.username}; path=/; SameSite=Strict`
+        window.location.reload()
+      }
     }
   }
 };

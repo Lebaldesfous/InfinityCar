@@ -5,24 +5,13 @@
             <h1 class="page-heading">Register</h1>
         </div>
       <!-- 2 column grid layout with text inputs for the first and last names -->
-      <MDBRow class="mb-4">
-        <MDBCol>
-          <MDBInput
-            type="text"
-            label="First name"
-            id="form3FirstName"
-            v-model="firstname"
-          />
-        </MDBCol>
-        <MDBCol>
-          <MDBInput
-            type="text"
-            label="Last name"
-            id="form3LastName"
-            v-model="lastname"
-          />
-        </MDBCol>
-      </MDBRow>
+      <MDBInput
+        type="text"
+        label="Username"
+        id="form3FirstName"
+        v-model="username"
+        wrapperClass="mb-4"
+      />
       <!-- Email input -->
       <MDBInput
         type="email"
@@ -94,9 +83,10 @@ export default {
     async signup() {
       let result = await api.post(
         "/signin",
-        {username: this.firstname, email: this.email, password:this.password}
+        {username: this.username, email: this.email, password:this.password}
       )
-      console.warn(result)
+      window.location.reload()
+
     } 
   }
 };
