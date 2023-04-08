@@ -29,6 +29,8 @@ public class Car {
     @Column(name = "pictureUrl")
     private String pictureUrl;
 
+    public Car() {
+    }
     public String getName() {
         return name;
     }

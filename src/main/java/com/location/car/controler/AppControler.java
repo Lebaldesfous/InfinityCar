@@ -2,6 +2,7 @@ package com.location.car.controler;
 
 import java.util.Optional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,9 +13,13 @@ import com.location.car.repository.UserRepository;
 @CrossOrigin
 @RequestMapping("")
 public class AppControler {
+
     @Autowired
-    private UserRepository UserRepository;
-    
+    private final UserRepository UserRepository;
+
+    public AppControler(UserRepository UserRepository) {
+        this.UserRepository = UserRepository;
+    }
     @PostMapping("/signin")
     public User signin(@RequestBody User newuser) {
         User user = new User();

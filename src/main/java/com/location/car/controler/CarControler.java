@@ -2,6 +2,7 @@ package com.location.car.controler;
 
 import java.util.Optional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,11 +10,16 @@ import com.location.car.model.Car;
 import com.location.car.repository.CarRepository;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080)")
+@CrossOrigin
 @RequestMapping("/cars")
 public class CarControler {
+
     @Autowired
     private CarRepository carRepository;
+
+    public CarControler(CarRepository carRepository) {
+        this.carRepository = carRepository;
+    }
     // view all customers
     @GetMapping("")
     public @ResponseBody Iterable<Car> getAllCars(){
