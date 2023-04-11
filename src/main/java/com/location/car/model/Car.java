@@ -29,6 +29,15 @@ public class Car {
     @Column(name = "pictureUrl")
     private String pictureUrl;
 
+    @Column(name = "fuel_efficiency")
+    private int fuel_efficiency;
+
+    @Column(name = "engine")
+    private String engine;
+
+    @Column(name = "horsepower")
+    private int horsepower;
+
     public Car() {
     }
     public String getName() {
@@ -58,6 +67,28 @@ public class Car {
         this.pictureUrl = pictureUrl;
     }
 
-  
+    public int getFuel_efficiency() {
+        return fuel_efficiency;
+    }
+
+    public void setFuel_efficiency(int fuel_efficiency) {
+        this.fuel_efficiency = fuel_efficiency;
+    }
+
+    public String getEngine() {
+        return engine;
+    }
+
+    public void setEngine(String engine) {
+        this.engine = engine;
+    }
+
+    public int getHorsepower() {
+        return horsepower;
+    }
+
+    public void setHorsepower(int horsepower) {
+        this.horsepower = horsepower;
+    }
 
 }
