@@ -1,8 +1,11 @@
 package com.location.car.controler;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 
+import com.location.car.model.CarDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,8 +25,14 @@ public class CarControler {
     }
     // view all customers
     @GetMapping("")
-    public @ResponseBody Iterable<Car> getAllCars(){
-        return carRepository.findAll();
+    public @ResponseBody List<CarDTO> getAllCars() {
+        List<Car> cars = (List<Car>) carRepository.findAll();
+        List<CarDTO> carDTOs = new ArrayList<>();
+        for (Car car : cars) {
+            CarDTO carDTO = new CarDTO(car.getId(), car.getName(), car.getModel(), car.getPrice(), car.getPictureUrl(), car.getFuel_efficiency(), car.getEngine(), car.getHorsepower(), car.getStock());
+            carDTOs.add(carDTO);
+        }
+        return carDTOs;
     }
 
     @PostMapping("/add")

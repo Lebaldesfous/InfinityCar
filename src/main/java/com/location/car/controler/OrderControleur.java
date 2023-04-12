@@ -36,6 +36,9 @@ public class OrderControleur {
         if (user.isPresent() && car.isPresent()) {
             Order order = new Order(car.get(), user.get(), orderRequest.getTotalPrice());
             orderRepository.save(order);
+            Car updatedCar = car.get();
+            updatedCar.setStock(updatedCar.getStock() - 1);
+            carRepository.save(updatedCar);
             return ResponseEntity.ok("Order added successfully");
         } else {
             return ResponseEntity.badRequest().body("User or car not found");

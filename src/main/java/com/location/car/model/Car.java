@@ -101,4 +101,8 @@ public class Car {
         this.stock = stock;
     }
 
+    public long getId(){
+        return this.id;
+    }
+
 }

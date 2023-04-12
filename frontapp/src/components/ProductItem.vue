@@ -19,7 +19,6 @@
                     </div>
                     <div class="d-flex flex-column">
                         <h5 class="mb-0">{{ car.fuel_efficiency }}</h5>
-                        <small class="text-muted text-right">(city/Hwy)</small>
                     </div>
                 </div>
                 <div class="d-flex flex-row justify-content-between p-3 mid">
@@ -34,9 +33,9 @@
                     </div>
                     <div class="d-flex flex-column">
                         <small class="text-muted mb-2">HORSEPOWER</small>
-                        <div class="d-flex flex-row">
-                            <h6 class="ml-1">{{car.horsepower}}</h6>
-                        </div>
+                        
+                            <h6 class="ml-1 text-right">{{car.horsepower}}</h6>
+                        
                     </div>
                 </div>
                 <small class="text-muted key pl-3">Stock :  {{ car.stock }}</small>
@@ -61,7 +60,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary text-danger" @click="showModal = false">Cancel</button>
-                    <button type="button" class="btn btn-primary text-white bg-danger">Rent</button>
+                    <button type="button" class="btn btn-primary text-white bg-danger" @click="bookThisCar()">Rent</button>
                 </div>
             </div>
         </div>
@@ -69,6 +68,8 @@
 </template>
 
 <script>
+import api from '@/api';
+
 export default {
     props: {
         car: {
@@ -80,6 +81,35 @@ export default {
             showModal: false,
         }
     },
+    methods: {
+        async bookThisCar() {
+            if(document.cookie.includes("session=")){
+                if(this.car.stock == 0){
+                    alert("Ce véhicule n'est plus disponible")
+                    window.location.reload()
+                    return
+                }
+                let username = document.cookie.split("session=")[1].split(";")[0]
+                let result1 = await api.get(
+                `user/${username}`,
+                )
+                let id = result1.data.id
+                id = result1.data
+                let result2 = await api.post(
+                '/order/add',
+                {
+                    carId : this.car.id,
+                    userId : id,
+                    totalPrice: this.car.price}
+                );
+                window.location.reload()
+            } else {
+                alert("Vous devez être connecté pour réserver un véhicule")
+                window.location.reload()
+            }
+            
+        }
+    }
 }
 </script>
 
