@@ -3,10 +3,10 @@
     <h1 class="page-heading">Some of our cars...</h1>
     <div class="container-fluid d-flex justify-content-center">
       <div class="row mt-5 justify-content-center">
-        <div class="col-md-4" v-for="(car, index) in cars" :key="index">
+        <div class="col-md-4"  v-for="(car, index) in cars" :key="index">
           <ProductItem :car="car"></ProductItem>
         </div>
-        <div v-if="cars.length % 3 == 1 || cars.length % 3 == 2" class="col-sm-4 mb-4"></div>
+        
       </div>
     </div>
   </div>
@@ -24,40 +24,36 @@ export default {
     return {
       cars: [
         {
-          image: 'https://imgur.com/edOjtEC.png',
-          price: '22,495',
-          fuel_efficiency: '8.5/7.1',
-          engine_icon: 'https://imgur.com/iPtsG7I.png',
-          engine: '1.4L MultiAir',
-          engine_type: '16V I-4 Turbo',
-          horsepower: '135 hp',
+          name: "RS3",
+          image: 'https://i.imgur.com/7AfKzqe.jpeg',
+          price: '72,000',
+          fuel_efficiency: '8.9',
+          engine: '2.5L 5 Cylinders',
+          horsepower: '400 hp',
         },
         {
-          image: 'https://imgur.com/edOjtEC.png',
-          price: '22,495',
-          fuel_efficiency: '8.5/7.1',
-          engine_icon: 'https://imgur.com/iPtsG7I.png',
-          engine: '1.4L MultiAir',
-          engine_type: '16V I-4 Turbo',
-          horsepower: '135 hp',
+          name: "C63",
+          image: 'https://i.imgur.com/NmEKx6z.jpeg',
+          price: '115,000',
+          fuel_efficiency: '6.9',
+          engine: '2.0L 4 Cylinders',
+          horsepower: '476 hp',
         },
         {
-          image: 'https://imgur.com/edOjtEC.png',
-          price: '22,495',
-          fuel_efficiency: '8.5/7.1',
-          engine_icon: 'https://imgur.com/iPtsG7I.png',
-          engine: '1.4L MultiAir',
-          engine_type: '16V I-4 Turbo',
-          horsepower: '135 hp',
+          name: "Golf 7R",
+          image: 'https://i.imgur.com/BFIbvcI.jpeg',
+          price: '40,700',
+          fuel_efficiency: '8.7',
+          engine: '2.0L TSI',
+          horsepower: '320 hp',
         },
         {
-          image: 'https://imgur.com/edOjtEC.png',
-          price: '22,495',
-          fuel_efficiency: '8.5/7.1',
-          engine_icon: 'https://imgur.com/iPtsG7I.png',
-          engine: '1.4L MultiAir',
-          engine_type: '16V I-4 Turbo',
-          horsepower: '135 hp',
+          name: "BMW M3",
+          image: 'https://i.imgur.com/FUrb8Yx.jpeg',
+          price: '109,950',
+          fuel_efficiency: '12',
+          engine: '2.5L Bi-Turbo',
+          horsepower: '530 hp',
         }
       ]
     }
@@ -68,6 +64,16 @@ export default {
 <style>
 .home {
   margin-top: 5%;
+}
+
+.col-md-4 {
+  width: 250px !important;
+  margin: 1%;
+}
+
+.row {
+  width: 900px!important;
+
 }
 </style>
 
