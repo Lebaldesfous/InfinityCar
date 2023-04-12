@@ -2,12 +2,9 @@ package com.location.car.model;
 
 import io.micrometer.common.lang.NonNull;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity // This tells Hibernate to make a table out of this class
 @Table(name = "account")
@@ -59,4 +56,7 @@ public class User {
     }
 
 
+    public long getId() {
+       return this.id;
+    }
 }

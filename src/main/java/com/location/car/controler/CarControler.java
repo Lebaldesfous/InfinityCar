@@ -67,7 +67,7 @@ public class CarControler {
         if(newCar.getEngine() != null){
             car.setEngine(newCar.getEngine());
         }
-        if(newCar.getHorsepower() != 0){
+        if(!newCar.getHorsepower().equals("")){
             car.setHorsepower(newCar.getHorsepower());
         }
         carRepository.save(car);

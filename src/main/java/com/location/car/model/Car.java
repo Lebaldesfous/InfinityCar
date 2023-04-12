@@ -1,12 +1,10 @@
 package com.location.car.model;
 
 import io.micrometer.common.lang.NonNull;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.Set;
 
 @Entity // This tells Hibernate to make a table out of this class
 @Table(name = "car")
@@ -15,7 +13,7 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column(name = "name")
     @NonNull
     private String name;
@@ -36,7 +34,12 @@ public class Car {
     private String engine;
 
     @Column(name = "horsepower")
-    private int horsepower;
+    private String horsepower;
+
+    @Column(name = "stock")
+    private int stock;
+
+
 
     public Car() {
     }
@@ -83,12 +86,19 @@ public class Car {
         this.engine = engine;
     }
 
-    public int getHorsepower() {
+    public String getHorsepower() {
         return horsepower;
     }
 
-    public void setHorsepower(int horsepower) {
+    public void setHorsepower(String horsepower) {
         this.horsepower = horsepower;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
 }

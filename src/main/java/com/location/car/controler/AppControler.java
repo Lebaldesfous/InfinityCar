@@ -4,6 +4,7 @@ import java.util.Optional;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.location.car.model.User;
@@ -48,9 +49,18 @@ public class AppControler {
         return UserRepository.findAll();
     }
 
-    @PutMapping("/users/{id}/update")
-    public User updateUser(@PathVariable int id, @RequestBody User newuser){
-        User user = UserRepository.findById(id).get();
+    @GetMapping("/user/{username}")
+    public ResponseEntity<Long> getUserIdByUsername(@PathVariable String username) {
+        Optional<User> user = UserRepository.findUserByUsername(username);
+        if (user.isPresent()) {
+            return ResponseEntity.ok(user.get().getId());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    @PutMapping("/users/{name}/update")
+    public User updateUser(@PathVariable String id, @RequestBody User newuser){
+        User user = UserRepository.findUserByUsername(id).get();
         if(newuser.getUsername() != null){
             user.setUsername(newuser.getUsername());
         }
