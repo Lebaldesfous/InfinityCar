@@ -1,7 +1,7 @@
 <template>
     <div class="col-sm-12 col-md-4 mb-4">
         <div class="card custom-card">
-            <img :src="car.image" class="card-img-top" width="100%">
+            <img :src="car.pictureUrl" class="card-img-top" width="100%">
             <div class="card-body pt-0 px-0">
                 <div class="d-flex flex-row justify-content-between mb-0 px-3">
                     <small class="text-muted mt-1">CAR</small>
@@ -35,12 +35,11 @@
                     <div class="d-flex flex-column">
                         <small class="text-muted mb-2">HORSEPOWER</small>
                         <div class="d-flex flex-row">
-                            <img src="https://imgur.com/J11mEBq.png">
                             <h6 class="ml-1">{{car.horsepower}}</h6>
                         </div>
                     </div>
                 </div>
-                <small class="text-muted key pl-3">Standard key Features</small>
+                <small class="text-muted key pl-3">Stock :  {{ car.stock }}</small>
                 <div class="mx-3 mt-3 mb-2"><button type="button" class="btn btn-danger btn-block"
                         @click="showModal = true"><small>BOOK</small></button></div>
                 <small class="d-flex justify-content-center text-muted">*Legal Disclaimer</small>
