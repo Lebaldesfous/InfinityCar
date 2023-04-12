@@ -33,6 +33,9 @@ public class CarControler {
         car.setModel(newCar.getModel());
         car.setPrice(newCar.getPrice());
         car.setPictureUrl(newCar.getPictureUrl());
+        car.setFuel_efficiency(newCar.getFuel_efficiency());
+        car.setEngine(newCar.getEngine());
+        car.setHorsepower(newCar.getHorsepower());
         carRepository.save(car);
         return car;
     }
@@ -57,6 +60,15 @@ public class CarControler {
         }
         if(newCar.getPictureUrl() != null){
             car.setPictureUrl(newCar.getPictureUrl());
+        }
+        if(newCar.getFuel_efficiency() != 0){
+            car.setFuel_efficiency(newCar.getFuel_efficiency());
+        }
+        if(newCar.getEngine() != null){
+            car.setEngine(newCar.getEngine());
+        }
+        if(newCar.getHorsepower() != 0){
+            car.setHorsepower(newCar.getHorsepower());
         }
         carRepository.save(car);
         return car;
