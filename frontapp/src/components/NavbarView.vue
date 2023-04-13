@@ -13,12 +13,11 @@
                         <li class="nav-item" v-if="checkSessionCookie()">
                             <RouterLink class="nav-link active text-decoration-none text-white" to="/profile">Profile</RouterLink>
                         </li>
+                        <li class="nav-item" v-if="checkIsAdmin()">
+                            <RouterLink class="nav-link active text-decoration-none text-white" to="/admin">Administration</RouterLink>
+                        </li>
                         <li class="nav-item" v-if="checkSessionCookie()" v-on:click="disconnect()">
                             <RouterLink class="nav-link active text-decoration-none text-white" to="/">Disconnect</RouterLink>
-                            
-                        </li>
-                        <li class="nav-item" v-if="checkSessionCookie()">
-                            <RouterLink class="nav-link active text-decoration-none text-white" to="/admin">Administration</RouterLink>
                             
                         </li>
                         <li class="nav-item" v-if="!checkSessionCookie()">
@@ -46,6 +45,18 @@ export default {
         }
       }
       return false;
+    },
+    checkIsAdmin(){
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.startsWith('session=')) {
+                let session = cookie.split('=')[1]
+                if(session == "admin" || session == "admin@infinity.com"){
+                    return true
+                }
+            }
+        }
     },
     disconnect(){
         document.cookie = `session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; SameSite=Strict`;

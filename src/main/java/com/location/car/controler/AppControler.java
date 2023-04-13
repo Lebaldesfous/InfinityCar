@@ -59,9 +59,9 @@ public class AppControler {
             return ResponseEntity.notFound().build();
         }
     }
-    @PutMapping("/users/{name}/update")
-    public User updateUser(@PathVariable String id, @RequestBody User newuser){
-        User user = UserRepository.findUserByUsername(id).get();
+    @PutMapping("/users/{id}/update")
+    public User updateUser(@PathVariable int id, @RequestBody User newuser){
+        User user = UserRepository.findById(id).get();
         if(newuser.getUsername() != null){
             user.setUsername(newuser.getUsername());
         }
@@ -75,10 +75,9 @@ public class AppControler {
         return user;
     }
 
-    @DeleteMapping("/users/{name}/delete")
-    public void deleteUser(@PathVariable String id){
-        User user = UserRepository.findUserByUsername(id).get();
-        UserRepository.delete(user);
+    @DeleteMapping("/users/{id}/delete")
+    public void deleteUser(@PathVariable int id){
+        UserRepository.deleteById(id);
     }
 
 }

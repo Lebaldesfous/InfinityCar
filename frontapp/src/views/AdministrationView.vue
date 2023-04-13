@@ -5,7 +5,7 @@
                 <h1>Users</h1>
             </div>
             <div class="col-auto">
-                <button class="btn btn-primary" @click="showModal = true">Add a user</button>
+                <button class="btn btn-primary" @click="showModalUser = true">Add a user</button>
             </div>
         </div>
 
@@ -33,7 +33,7 @@
             </tbody>
         </table>
 
-        <modal v-if="showModal" @close="showModal = false">
+        <modal v-if="showModalUser" @close="showModalUser = false">
             <h2>{{ modalTitle }}</h2>
             <form @submit.prevent="saveUser">
                 <div class="form-group">
@@ -45,8 +45,37 @@
                     <input id="user-username" class="form-control" type="text" v-model="editedUser.username" required>
                 </div>
                 <div class="form-group">
+                    <label for="user-password">Password</label>
+                    <input id="user-password" class="form-control" type="password" v-model="editedUser.password" required>
+                </div>
+                <div class="form-group">
                     <label for="user-role">Role</label>
                     <select id="user-role" class="form-control" v-model="editedUser.role" required>
+                        <option value="user">user</option>
+                        <option value="admin">admin</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary mt-1" type="submit">Save</button>
+            </form>
+        </modal>
+        <modal v-if="showModalUserEdit" @close="showModalUserEdit = false">
+            <h2>{{ modalTitle }}</h2>
+            <form @submit.prevent="applyEditUser">
+                <div class="form-group">
+                    <label for="user-email">Email</label>
+                    <input id="user-email" class="form-control" type="email" v-model="editedUser.email">
+                </div>
+                <div class="form-group">
+                    <label for="user-username">Username</label>
+                    <input id="user-username" class="form-control" type="text" v-model="editedUser.username">
+                </div>
+                <div class="form-group">
+                    <label for="user-password">Password</label>
+                    <input id="user-password" class="form-control" type="password" v-model="editedUser.password">
+                </div>
+                <div class="form-group">
+                    <label for="user-role">Role</label>
+                    <select id="user-role" class="form-control" v-model="editedUser.role">
                         <option value="user">user</option>
                         <option value="admin">admin</option>
                     </select>
@@ -61,7 +90,7 @@
                     <h1>Cars</h1>
                 </div>
                 <div class="col-auto">
-                    <button class="btn btn-primary" @click="showModal = true">Add a car</button>
+                    <button class="btn btn-primary" @click="showModalCar = true">Add a car</button>
                 </div>
             </div>
 
@@ -90,32 +119,27 @@
                         <td>{{ car.price }}</td>
                         <td>{{ car.stock }}</td>
                         <td>
-                            <button class="btn btn-primary mr-2" @click="editCar(car)">Modifier</button>
-                            <button class="btn btn-danger" @click="deleteCar(car)">Supprimer</button>
+                            <button class="btn btn-primary mr-2" @click="editCar(car)">Modify</button>
+                            <button class="btn btn-danger" @click="deleteCar(car)">Delete</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
 
-            <modal v-if="showModal" @close="showModal = false">
+            <modal v-if="showModalCar" @close="showModalCar = false">
                 <h2>{{ modalTitle }}</h2>
                 <form @submit.prevent="saveCar">
                     <div class="form-group">
-                        <label for="car-id">Identifiant:</label>
-                        <input id="car-id" class="form-control" type="text" v-model="editedCar.id" required>
-                    </div>
-                    <div class="form-group">
                         <label for="car-engine">Engine:</label>
-                        <input id="car-engine" class="form-control" type="text" v-model="editedCar.engine" required>
+                        <input id="car-engine" class="form-control" type="text" v-model="editedCar.engine">
                     </div>
                     <div class="form-group">
                         <label for="car-fuel-efficiency">Fuel Efficiency:</label>
-                        <input id="car-fuel-efficiency" class="form-control" type="text" v-model="editedCar.fuel_efficiency"
-                            required>
+                        <input id="car-fuel-efficiency" class="form-control" type="text" v-model="editedCar.fuel_efficiency">
                     </div>
                     <div class="form-group">
                         <label for="car-horsepower">Horsepower:</label>
-                        <input id="car-horsepower" class="form-control" type="text" v-model="editedCar.horsepower" required>
+                        <input id="car-horsepower" class="form-control" type="text" v-model="editedCar.horsepower">
                     </div>
                     <div class="form-group">
                         <label for="car-name">Name:</label>
@@ -123,17 +147,51 @@
                     </div>
                     <div class="form-group">
                         <label for="car-pictureurl">Picture URL :</label>
-                        <input type="text" v-model="editedCar.picture_url" required>
+                        <input id="car-pictureurl" class="form-control" type="text" v-model="editedCar.picture_url">
                     </div>
                     <div class="form-group">
                         <label for="car-price">Price :</label>
-                        <input type="text" v-model="editedCar.price" required>
+                        <input id="car-price" class="form-control" type="text" v-model="editedCar.price">
                     </div>
                     <div class="form-group">
                         <label for="car-price">Stock :</label>
-                        <input type="text" v-model="editedCar.stock" required>
+                        <input id="car-stocks" class="form-control" type="text" v-model="editedCar.stock">
                     </div>
-                    <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                    <button type="submit" class="btn btn-primary mt-2">Sauvegarder</button>
+                </form>
+            </modal>
+            <modal v-if="showModalCarEdit" @close="showModalCarEdit = false">
+                <h2>{{ modalTitle }}</h2>
+                <form @submit.prevent="applyEditCar">
+                    <div class="form-group">
+                        <label for="car-engine">Engine:</label>
+                        <input id="car-engine" class="form-control" type="text" v-model="editedCar.engine">
+                    </div>
+                    <div class="form-group">
+                        <label for="car-fuel-efficiency">Fuel Efficiency:</label>
+                        <input id="car-fuel-efficiency" class="form-control" type="text" v-model="editedCar.fuel_efficiency">
+                    </div>
+                    <div class="form-group">
+                        <label for="car-horsepower">Horsepower:</label>
+                        <input id="car-horsepower" class="form-control" type="text" v-model="editedCar.horsepower">
+                    </div>
+                    <div class="form-group">
+                        <label for="car-name">Name:</label>
+                        <input id="car-name" class="form-control" type="text" v-model="editedCar.name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="car-pictureurl">Picture URL :</label>
+                        <input id="car-pictureurl" class="form-control" type="text" v-model="editedCar.picture_url">
+                    </div>
+                    <div class="form-group">
+                        <label for="car-price">Price :</label>
+                        <input id="car-price" class="form-control" type="text" v-model="editedCar.price">
+                    </div>
+                    <div class="form-group">
+                        <label for="car-price">Stock :</label>
+                        <input id="car-stocks" class="form-control" type="text" v-model="editedCar.stock">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Sauvegarder</button>
                 </form>
             </modal>
         </div>
@@ -154,7 +212,10 @@ export default {
     data() {
         return {
             users: [],
-            showModal: false,
+            showModalUser: false,
+            showModalUserEdit: false,
+            showModalCar: false,
+            showModalCarEdit: false,
             modalTitle: '',
             editedUser: {
                 id: null,
@@ -194,27 +255,23 @@ export default {
                 username: user.username
             }
             this.modalTitle = 'User Modify'
-            this.showModal = true
+            this.showModalUserEdit = true
         },
-
-        saveUser() {
-            if (this.editedUser.id) {
-                api.put('/users/' + this.editedUser.username + '/update', this.editedUser)
-                    .then(() => this.getUsers())
-                    .catch(error => console.log(error))
-            } else {
-                api.post('/signin', this.editedUser)
-                    .then(() => this.getUsers())
-                    .catch(error => console.log(error))
-            }
-            this.showModal = false
+        async saveUser() {
+            let result = api.post('/signin', this.editedUser)
+            this.showModalUser = false
+            window.location.reload()
         },
-
-        deleteUser(user) {
+        async applyEditUser(){
+            let result = api.put(`/users/${this.editedUser.id}/update`, this.editedUser)
+            this.showModalUserEdit = false
+            window.location.reload()
+        },
+        async deleteUser(user) {
             if (confirm('Are you sure that you want to delete this user ?')) {
-                api.delete('/users/' + user.username + '/delete')
-                    .then(() => this.getUsers())
-                    .catch(error => console.log(error))
+                let result = api.delete(`users/${user.id}/delete`)
+                this.showModalUser = false
+                window.location.reload()
             }
         },
 
@@ -222,6 +279,16 @@ export default {
             api.get('/cars').then(response => {
                 this.cars = response.data
             })
+        },
+        async saveCar() {
+            let result = api.post('/cars/add', this.editedCar)
+            this.showModalCar = false
+            window.location.reload()
+        },
+        async applyEditCar(){
+            let result = api.put(`/cars/${this.editedCar.id}/update`, this.editedCar)
+            this.showModalCarEdit = false
+            console.log(result)
         },
         editCar(car) {
             this.editedCar = {
@@ -235,7 +302,7 @@ export default {
                 stock: car.stock
             }
             this.modalTitle = 'Car Modify'
-            this.showModal = true
+            this.showModalCarEdit = true
         },
 
         deleteCar(car) {

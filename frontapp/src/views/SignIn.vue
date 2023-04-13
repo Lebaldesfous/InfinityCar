@@ -8,7 +8,7 @@
       <MDBInput
         type="username"
         label="Username or email"
-        v-model="username"
+        v-model="email"
         wrapperClass="mb-4"
       />
       <!-- Password input -->
@@ -20,11 +20,11 @@
       />
 
       <!-- Submit button -->
-      <RouterLink to="/"><MDBBtn color="primary" block v-on:click="login"> Sign in </MDBBtn></RouterLink>
+      <MDBBtn color="primary" block v-on:click="login"> Sign in </MDBBtn>
   
       <!-- Register buttons -->
       <div class="text-center">
-        <p>Not a member? <a href="#!">Register</a></p>
+        <RouterLink to="/signin">Not a member? <a href="/signup">Register</a></RouterLink>
       </div>
     </form>
   </template>
@@ -62,15 +62,22 @@ export default {
   },
   methods:{
     async login(){
+      if(this.email == "" || this.password == ""){
+        alert("Please fill all the fields")
+        return
+      }
       let result = await api.post(
         "/login",
-        {username: this.username, password:this.password}
+        {username: this.email, password:this.password}
       )
       console.log(result)
       if(document.cookie.includes("session=")){
         console.log("Un cookie de session existe déjà.")
       }else if(result.data != null){
-        document.cookie = `session=${this.username}; path=/; SameSite=Strict`
+        document.cookie = `session=${this.email}; path=/; SameSite=Strict`
+        window.location.href = "/"
+      } else {
+        alert("Wrong username or password")
         window.location.reload()
       }
     }
