@@ -28,6 +28,10 @@ public class User {
     @NonNull
     private String email;
 
+    @Column(name = "role")
+    @NonNull
+    private String role;
+
    public User() {
     }
 
@@ -55,8 +59,14 @@ public class User {
         this.email=email;
     }
 
-
     public long getId() {
        return this.id;
+    }
+
+    public void setRole(String role) {
+       this.role = role;
+    }
+    public String getRole() {
+       return this.role;
     }
 }

@@ -30,6 +30,7 @@ public class AppControler {
         user.setUsername(newuser.getUsername());
         user.setPassword(newuser.getPassword());
         user.setEmail(newuser.getEmail());
+        user.setRole(newuser.getRole());
         
         UserRepository.save(user);
         return user;
