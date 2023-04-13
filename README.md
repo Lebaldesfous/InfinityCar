@@ -64,9 +64,9 @@ npm install
 - Lancer l'API > éxécuter le fichier java *CarApplication.java*
 - Lancer le front > Dans le folder frontapp : `npm run serve`
 
-## Documentation
+# Documentation
 
-# Basepath "/"
+## Basepath "/"
 | Method      | Path        | Parameters                                                  | Description |
 | :---        |    :----:   |         :-----:                                               |   ---:      |
 | POST        | /signin     | (String) username</br>(String) password</br>(String) email  | Permet à l'utilisateur de s'inscrire |
@@ -76,7 +76,7 @@ npm install
 | PUT   | /users/{username}/update       | (String) username</br>(String) password</br>(String) email  | Permet de mettre à jour un utilisateur |
 
 
-# Basepath "/cars"
+## Basepath "/cars"
 | Method      | Path        | Parameters                                                  | Description |
 | :---        |    :----:   |         :-----:                                               |   ---:      |
 | GET        | /     | None | Récupère la liste de toutes les voitures |
@@ -85,6 +85,11 @@ npm install
 | PUT        | /{id}/update     | (String) name</br>(String) model</br>(Int) price</br>(String) pictureUrl</br>(Int) fuel_efficiency</br>(String) engine</br>(String) horsepower</br> | Met à jour une voiture en base de données selon son identifiant |
 | DELETE        | /{id}/delete     | None | Supprime la voiture dont l'identifiant est "id" |
 
+## Basepath "/order"
+| Method      | Path        | Parameters                                                  | Description |
+| :---        |    :----:   |         :-----:                                               |   ---:      |
+| POST        | /add     | (Int) userId</br>(Int) carId</br>(Int) totalPrice | Place une réservation d'une voiture pour un utilisateur |
+| GET        | /user/{userId}    | None | Récupère la liste des réservations pour un utilisateur donné |
 
 
 
