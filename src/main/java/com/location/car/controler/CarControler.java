@@ -65,13 +65,13 @@ public class CarControler {
         if(newCar.getModel() != null){
             car.setModel(newCar.getModel());
         }
-        if(newCar.getPrice() != 0){
+        if(newCar.getPrice() >= 0){
             car.setPrice(newCar.getPrice());
         }
         if(newCar.getPictureUrl() != null){
             car.setPictureUrl(newCar.getPictureUrl());
         }
-        if(newCar.getFuel_efficiency() != 0){
+        if(newCar.getFuel_efficiency() >= 0){
             car.setFuel_efficiency(newCar.getFuel_efficiency());
         }
         if(newCar.getEngine() != null){
@@ -80,7 +80,7 @@ public class CarControler {
         if(!newCar.getHorsepower().equals("")){
             car.setHorsepower(newCar.getHorsepower());
         }
-        if(newCar.getStock() != 0) {
+        if(newCar.getStock() >= 0) {
             car.setStock(newCar.getStock());
         }
         carRepository.save(car);
