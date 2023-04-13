@@ -71,3 +71,7 @@ npm install
 | :---        |    :----:   |         :---:                                               |   ---:      |
 | POST        | /signin     | (String) username</br>(String) password</br>(String) email  | Permet à l'utilisateur de s'inscrire |
 | POST   | /login        | (String) username</br>(String) password  | Permet à un utilisateur de se connecter|
+| GET   | /users        | None  | Permet de récupérer la liste de tous les utilisateurs |
+| GET   | /users/{username}       | (String) username  | Permet de récupérer l'identifiant d'un utilisateur selon son username |
+| PUT   | /users/{username}/update       | None  | Permet de récupérer la liste de tous les utilisateurs |
+
