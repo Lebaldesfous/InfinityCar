@@ -30,6 +30,7 @@ public class AppControler {
         user.setUsername(newuser.getUsername());
         user.setPassword(newuser.getPassword());
         user.setEmail(newuser.getEmail());
+        user.setRole(newuser.getRole());
         
         UserRepository.save(user);
         return user;
@@ -72,6 +73,12 @@ public class AppControler {
         }
         UserRepository.save(user);
         return user;
+    }
+
+    @DeleteMapping("/users/{name}/delete")
+    public void deleteUser(@PathVariable String id){
+        User user = UserRepository.findUserByUsername(id).get();
+        UserRepository.delete(user);
     }
 
 }

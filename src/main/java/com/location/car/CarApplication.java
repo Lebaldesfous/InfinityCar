@@ -1,7 +1,9 @@
 package com.location.car;
 
 import com.location.car.model.Car;
+import com.location.car.model.User;
 import com.location.car.repository.CarRepository;
+import com.location.car.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,9 +18,11 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class CarApplication implements CommandLineRunner {
 
 	final CarRepository carRepository;
+	final UserRepository userRepository;
 
-	public CarApplication(CarRepository carRepository) {
+	public CarApplication(CarRepository carRepository, UserRepository userRepository) {
 		this.carRepository = carRepository;
+		this.userRepository = userRepository;
 	}
 
 	public static void main(String[] args) {
@@ -87,5 +91,12 @@ public class CarApplication implements CommandLineRunner {
 		car3.setHorsepower("530");
 		car3.setStock(2);
 		carRepository.save(car3);
+
+		User user = new User();
+		user.setUsername("admin");
+		user.setPassword("admin");
+		user.setEmail("admin@infinity.com");
+		user.setRole("admin");
+		userRepository.save(user);
 	}
 }
