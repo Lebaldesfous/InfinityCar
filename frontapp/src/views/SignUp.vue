@@ -94,7 +94,7 @@ export default {
       }
       let result = await api.post(
         "/signin",
-        {username: this.username, email: this.email, password:this.password}
+        {username: this.username, email: this.email, password:this.password, role:"user"}
       )
       if (result.status === 200) {
         alert('User created successfully');
