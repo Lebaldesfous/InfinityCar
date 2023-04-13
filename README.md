@@ -16,7 +16,7 @@
 wsl --install ubuntu 
 ```
 
-#### installer mariadb
+#### Installer mariadb
 
 ```
 sudo apt update
@@ -24,7 +24,7 @@ sudo apt update
 sudo apt install mariadb-server mariadb-client
 ```
 
-#### Démarrer la base de données:
+#### Démarrer la base de données :
 
 ```
 sudo service mariadb start
@@ -63,3 +63,11 @@ npm install
 - Lancer la base de données > `sudo service mariadb start`
 - Lancer l'API > éxécuter le fichier java *CarApplication.java*
 - Lancer le front > Dans le folder frontapp : `npm run serve`
+
+## Documentation
+
+# Basepath "/"
+| Method      | Path        | Parameters                                                  | Description |
+| :---        |    :----:   |         :---:                                               |   ---:      |
+| POST        | /signin     | (String) username</br>(String) password</br>(String) email  | Permet à l'utilisateur de s'inscrire |
+| POST   | /login        | (String) username</br>(String) password  | Permet à un utilisateur de se connecter|
