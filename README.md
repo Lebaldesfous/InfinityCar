@@ -74,6 +74,7 @@ npm install
 | GET   | /users        | None  | Permet de récupérer la liste de tous les utilisateurs |
 | GET   | /users/{username}       | None  | Permet de récupérer l'identifiant d'un utilisateur selon son username |
 | PUT   | /users/{username}/update       | (String) username</br>(String) password</br>(String) email  | Permet de mettre à jour un utilisateur |
+| PUT   | /users/{username}/delete       |   | Permet de supprimer un utilisateur |
 
 
 ## Basepath "/cars"
