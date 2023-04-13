@@ -1,8 +1,10 @@
 # InfinityCar
 
-## Installer Mariadb sous wsl
+## Pré-requis
 
-### Windows
+### Installer WSL
+
+#### Windows
 
 - Télécharger wsl dans le microsoft store
 
@@ -14,7 +16,7 @@
 wsl --install ubuntu 
 ```
 
-### installer mariadb
+#### installer mariadb
 
 ```
 sudo apt update
@@ -22,13 +24,13 @@ sudo apt update
 sudo apt install mariadb-server mariadb-client
 ```
 
-### Démarrer la base de données:
+#### Démarrer la base de données:
 
 ```
 sudo service mariadb start
 
 ```
-### Créer la base de données & un utilisateur :
+#### Créer la base de données & un utilisateur :
 
 ```
 sudo mysql -u root
@@ -38,19 +40,19 @@ MariaDB [(none)]>create user infinityadmin identified by 'admin';
 MariaDB [(none)]>grant all privileges on infinitycardb.* to infinityadmin;
 ```
 
-## Installer Node 
+### Installer Node 
 
-### Linux 
+#### Linux 
 
 ```
 sudo apt install node
 ```
-### Windows 
+#### Windows 
 
 ```
 winget install "OpenJS.NodeJS"
 ```
-#### Dans le dossier frontapp :
+##### Dans le dossier frontapp :
 
 ```
 npm install 
