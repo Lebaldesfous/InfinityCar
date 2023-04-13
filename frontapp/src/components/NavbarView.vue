@@ -17,6 +17,10 @@
                             <RouterLink class="nav-link active text-decoration-none text-white" to="/">Disconnect</RouterLink>
                             
                         </li>
+                        <li class="nav-item" v-if="checkSessionCookie()">
+                            <RouterLink class="nav-link active text-decoration-none text-white" to="/admin">Administration</RouterLink>
+                            
+                        </li>
                         <li class="nav-item" v-if="!checkSessionCookie()">
                             <RouterLink class="nav-link active text-decoration-none text-white" to="/login">Login</RouterLink>
                         </li>
