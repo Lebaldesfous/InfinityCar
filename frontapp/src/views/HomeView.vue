@@ -1,9 +1,16 @@
 <template>
   <div class="home">
     <h1 class="page-heading">Some of our cars...</h1>
+    
+    <div class="d-flex justify-content-center">
+      <form class="d-flex w-50 p-2" @submit.prevent="searchCar">
+        <input class="form-control me-2" v-model="searchQuery" type="search" placeholder="Search" aria-label="Search">
+      </form>
+    </div>
+    
     <div class="container-fluid d-flex justify-content-center">
       <div class="row mt-5 justify-content-center">
-        <div class="col-md-4"  v-for="(car, index) in cars" :key="index">
+        <div class="col-md-4"  v-for="(car, index) in filteredCars" :key="index">
           <ProductItem :car="car"></ProductItem>
         </div>
         
@@ -24,10 +31,16 @@ export default {
   data() {
     return {
       cars: [],
+      searchQuery: ''
     };
   },
   mounted() {
     this.fetchCars();
+  },
+  computed: {
+    filteredCars() {
+      return this.cars.filter((car) => car.name.toLowerCase().includes(this.searchQuery.toLowerCase()))
+    }
   },
   methods: {
     async fetchCars() {
@@ -39,6 +52,10 @@ export default {
       } catch (error) {
         console.log(error);
       }
+    },
+    searchCar(){
+      //find car by name
+      
     },
   }
 }
@@ -58,4 +75,3 @@ export default {
   width: 900px!important;
 }
 </style>
-

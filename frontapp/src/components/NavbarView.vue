@@ -24,10 +24,6 @@
                             <RouterLink class="nav-link active text-decoration-none text-white" to="/signin">Sign In</RouterLink>
                         </li>
                     </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success text-white border-white" type="submit">Search</button>
-                    </form>
                 </div>
             </div>
         </nav>

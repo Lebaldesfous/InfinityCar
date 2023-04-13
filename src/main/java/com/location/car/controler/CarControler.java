@@ -45,6 +45,7 @@ public class CarControler {
         car.setFuel_efficiency(newCar.getFuel_efficiency());
         car.setEngine(newCar.getEngine());
         car.setHorsepower(newCar.getHorsepower());
+        car.setStock(newCar.getStock());
         carRepository.save(car);
         return car;
     }
