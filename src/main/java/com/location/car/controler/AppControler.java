@@ -74,4 +74,10 @@ public class AppControler {
         return user;
     }
 
+    @DeleteMapping("/users/{name}/delete")
+    public void deleteUser(@PathVariable String id){
+        User user = UserRepository.findUserByUsername(id).get();
+        UserRepository.delete(user);
+    }
+
 }
