@@ -70,23 +70,33 @@ export default {
     MDBBtn,
     MDBIcon
   },
-  methods: {
-    data() {
+  data() {
       return {
-        firstname:"",
-        lastname:"",
+        username:"",
         email:"",
         password:"",
         passwordconfirm: ""
       }
-    },
+  },
+  methods: {
     async signup() {
+      if (this.username.trim() === '') {
+        alert('Username is required');
+        return;
+      }
+      if (!this.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+        alert('Invalid email format');
+        return;
+      }
+      if (this.password !== this.passwordconfirm) {
+        alert('Passwords do not match');
+        return;
+      }
       let result = await api.post(
         "/signin",
         {username: this.username, email: this.email, password:this.password}
       )
       window.location.reload()
-
     } 
   }
 };
