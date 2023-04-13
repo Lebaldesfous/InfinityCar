@@ -41,7 +41,7 @@ public class AppControler {
         //find user by email or username and password
         Optional<User> user = UserRepository.findUserByUsernameAndPassword(newuser.getUsername(), newuser.getPassword()).isPresent()?
                 UserRepository.findUserByUsernameAndPassword(newuser.getUsername(), newuser.getPassword()):
-                UserRepository.findUserByEmailAndPassword(newuser.getEmail(), newuser.getPassword());
+                UserRepository.findUserByEmailAndPassword(newuser.getUsername(), newuser.getPassword());
         return user;
     }
 

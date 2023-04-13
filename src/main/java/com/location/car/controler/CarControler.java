@@ -80,6 +80,9 @@ public class CarControler {
         if(!newCar.getHorsepower().equals("")){
             car.setHorsepower(newCar.getHorsepower());
         }
+        if(newCar.getStock() != 0) {
+            car.setStock(newCar.getStock());
+        }
         carRepository.save(car);
         return car;
     }

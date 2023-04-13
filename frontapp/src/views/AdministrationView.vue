@@ -286,6 +286,7 @@ export default {
             window.location.reload()
         },
         async applyEditCar(){
+            console.log(this.editedCar)
             let result = api.put(`/cars/${this.editedCar.id}/update`, this.editedCar)
             this.showModalCarEdit = false
             console.log(result)

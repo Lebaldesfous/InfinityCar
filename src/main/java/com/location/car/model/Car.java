@@ -105,4 +105,8 @@ public class Car {
         return this.id;
     }
 
+    public String toString(){
+        return ("Car: " + this.name + " " + this.model + " " + this.price + " " + this.pictureUrl + " " + this.fuel_efficiency + " " + this.engine + " " + this.horsepower + " " + this.stock);
+    }
+
 }
