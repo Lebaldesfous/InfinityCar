@@ -115,7 +115,7 @@
                         <td>{{ car.fuel_efficiency }}</td>
                         <td>{{ car.horsepower }}</td>
                         <td>{{ car.name }}</td>
-                        <td>{{ car.picture_url }}</td>
+                        <td>{{ car.pictureUrl }}</td>
                         <td>{{ car.price }}</td>
                         <td>{{ car.stock }}</td>
                         <td>
@@ -147,7 +147,7 @@
                     </div>
                     <div class="form-group">
                         <label for="car-pictureurl">Picture URL :</label>
-                        <input id="car-pictureurl" class="form-control" type="text" v-model="editedCar.picture_url">
+                        <input id="car-pictureurl" class="form-control" type="text" v-model="editedCar.pictureUrl">
                     </div>
                     <div class="form-group">
                         <label for="car-price">Price :</label>
@@ -181,7 +181,7 @@
                     </div>
                     <div class="form-group">
                         <label for="car-pictureurl">Picture URL :</label>
-                        <input id="car-pictureurl" class="form-control" type="text" v-model="editedCar.picture_url">
+                        <input id="car-pictureurl" class="form-control" type="text" v-model="editedCar.pictureUrl">
                     </div>
                     <div class="form-group">
                         <label for="car-price">Price :</label>
@@ -229,7 +229,7 @@ export default {
                 fuel_efficiency: '',
                 horsepower: '',
                 name: '',
-                picture_url: '',
+                pictureUrl: '',
                 price: '',
                 stock: ''
             }
@@ -297,7 +297,7 @@ export default {
                 fuel_efficiency: car.fuel_efficiency,
                 horsepower: car.horsepower,
                 name: car.name,
-                picture_url: car.picture_url,
+                pictureUrl: car.pictureUrl,
                 price: car.price,
                 stock: car.stock
             }
