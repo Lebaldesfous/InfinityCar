@@ -27,16 +27,15 @@ sudo apt install mariadb-server mariadb-client
 ```
 sudo service mariadb start
 
-sudo mysql -u root
 ```
 ### Créer la base de données & un utilisateur :
 
 ```
-create database infinitycardb;
+sudo mysql -u root
 
-create user infinityadmin identified by 'admin';
-
-grant all privileges on infinitycardb.* to infinityadmin;
+MariaDB [(none)]>create database infinitycardb;
+MariaDB [(none)]>create user infinityadmin identified by 'admin';
+MariaDB [(none)]>grant all privileges on infinitycardb.* to infinityadmin;
 ```
 
 ## Installer Node 
@@ -56,3 +55,9 @@ winget install "OpenJS.NodeJS"
 ```
 npm install 
 ```
+
+## Démarrer le projet
+
+- Lancer la base de données > `sudo service mariadb start`
+- Lancer l'API > éxécuter le fichier java *CarApplication.java*
+- Lancer le front > Dans le folder frontapp : `npm run serve`
