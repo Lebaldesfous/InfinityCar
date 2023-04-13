@@ -96,7 +96,13 @@ export default {
         "/signin",
         {username: this.username, email: this.email, password:this.password}
       )
-      window.location.reload()
+      if (result.status === 200) {
+        alert('User created successfully');
+        window.location.href="/"
+      } else {
+        alert('Error creating user');
+        window.location.reload()
+      }
     } 
   }
 };
