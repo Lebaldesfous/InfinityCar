@@ -28,20 +28,20 @@
                     </div>
                     <div class="mx-auto d-flex justify-content-center">
                       <h5 class="fw-bold">N° de réservation : {{ command.id }}</h5>
-                    <div>
-                      <div class="flex-grow-1 ps-3"><small class="float-right" id="Time">Modèle :
-                          {{ command.car.name }}</small>
+                      <div>
+                        <div class="flex-grow-1 ps-3"><small class="float-right" id="Time">Modèle :
+                            {{ command.car.name }}</small>
 
+                        </div>
+                        <div class="flex-grow-1 ps-3"><small class="float-right" id="Time">À payer :
+                            {{ command.car.price }}</small></div>
+                        <div class="flex-grow-1 ps-3"><small class="float-right" id="Time">Moteur :
+                            {{ command.car.engine }}</small></div>
+                        <div class="flex-grow-1 ps-3"><small class="float-right" id="Time">
+                            {{ command.car.horsepower }}</small></div>
                       </div>
-                      <div class="flex-grow-1 ps-3"><small class="float-right" id="Time">À payer :
-                          {{ command.car.price }}</small></div>
-                      <div class="flex-grow-1 ps-3"><small class="float-right" id="Time">Moteur :
-                        {{ command.car.engine }}</small></div>
-                      <div class="flex-grow-1 ps-3"><small class="float-right" id="Time">
-                        {{ command.car.horsepower }}</small></div>
                     </div>
-                    </div>
-                    
+                    <button class="btn btn-danger pull-right" @click="cancelOrder(command.id)">Annuler</button>
                   </div>
                 </div>
               </div>
@@ -87,13 +87,21 @@ export default {
       } catch (error) {
         console.log(error);
       }
-    }
+    },
+    async cancelOrder(orderId) {
+      try {
+        await api.delete(`order/${orderId}/delete`);
+        window.location.reload()
+      } catch (error) {
+        console.log(error);
+      }
+}
   }
 }
 </script>
 
 <style>
-.profile-card{
+.profile-card {
   margin-right: 3%;
 }
 </style>

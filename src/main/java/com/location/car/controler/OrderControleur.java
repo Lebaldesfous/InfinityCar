@@ -55,4 +55,15 @@ public class OrderControleur {
             return ResponseEntity.badRequest().body(null);
         }
     }
+
+    @DeleteMapping("/{id}/delete")
+    public void deleteOrder(@PathVariable int id){
+        Optional<Car> car = carRepository.findById(id);
+        if(car.isPresent()){
+            Car updatedCar = car.get();
+            updatedCar.setStock(updatedCar.getStock() + 1);
+            carRepository.save(updatedCar);
+        }
+        orderRepository.deleteById(id);
+    }
 }
