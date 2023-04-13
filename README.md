@@ -73,8 +73,8 @@ npm install
 | POST   | /login        | (String) username</br>(String) password  | Permet à un utilisateur de se connecter|
 | GET   | /users        | None  | Permet de récupérer la liste de tous les utilisateurs |
 | GET   | /users/{username}       | None  | Permet de récupérer l'identifiant d'un utilisateur selon son username |
-| PUT   | /users/{username}/update       | (String) username</br>(String) password</br>(String) email  | Permet de mettre à jour un utilisateur |
-| PUT   | /users/{username}/delete       |   | Permet de supprimer un utilisateur |
+| PUT   | /users/{id}/update       | (String) username</br>(String) password</br>(String) email  | Permet de mettre à jour un utilisateur selon son identifiant |
+| PUT   | /users/{id}/delete       |   | Permet de supprimer un utilisateur selon son id |
 
 
 ## Basepath "/cars"
@@ -91,6 +91,7 @@ npm install
 | :---        |    :----:   |         :-----:                                               |   ---:      |
 | POST        | /add     | (Int) userId</br>(Int) carId</br>(Int) totalPrice | Place une réservation d'une voiture pour un utilisateur |
 | GET        | /user/{userId}    | None | Récupère la liste des réservations pour un utilisateur donné |
+| DELETE        | /{id}/delete    | None | Annule la réservation placée |
 
 
 
