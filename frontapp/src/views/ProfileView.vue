@@ -41,7 +41,7 @@
                             {{ command.car.horsepower }}</small></div>
                       </div>
                     </div>
-                    <button class="btn btn-danger pull-right" @click="cancelOrder(command.id)">Annuler</button>
+                    <button class="btn btn-danger pull-right" @click="cancelOrder(command.id)">Cancel</button>
                   </div>
                 </div>
               </div>
