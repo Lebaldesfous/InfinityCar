@@ -58,11 +58,11 @@ public class OrderControleur {
 
     @DeleteMapping("/{id}/delete")
     public void deleteOrder(@PathVariable int id){
-        Optional<Car> car = carRepository.findById(id);
-        if(car.isPresent()){
-            Car updatedCar = car.get();
-            updatedCar.setStock(updatedCar.getStock() + 1);
-            carRepository.save(updatedCar);
+        Order order = orderRepository.findById(id).get();
+        Car car = order.getCar();
+        if(car != null){
+            car.setStock(car.getStock() + 1);
+            carRepository.save(car);
         }
         orderRepository.deleteById(id);
     }
